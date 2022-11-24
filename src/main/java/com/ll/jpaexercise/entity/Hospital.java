@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Table(name = "hospital2")
 @Entity
 public class Hospital {
 
@@ -16,5 +17,5 @@ public class Hospital {
     private String roadAddress;
 
     @OneToMany(mappedBy = "hospital", fetch = FetchType.LAZY)
-    private List<Review> reviews = new ArrayList<>();
+    private List<Review> reviews;
 }

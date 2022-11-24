@@ -20,13 +20,13 @@ public class HospitalRestController {
     private final ReviewService reviewService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<HospitalReviewResponse>> findById(@PathVariable Long id) throws Exception {
-        List<HospitalReviewResponse> hospitalReviewResponse = hospitalService.findById(id);
+    public ResponseEntity<List<HospitalReviewResponse>> getOneHospital(@PathVariable Long id) throws Exception {
+        List<HospitalReviewResponse> hospitalReviewResponse = hospitalService.getOneHospital(id);
         return ResponseEntity.ok().body(hospitalReviewResponse);
     }
 
     @PostMapping("/{id}/reviews")
-    public ResponseEntity<ReviewCreateResponse> get(@PathVariable Long id, @RequestBody ReviewCreateRequest request){
+    public ResponseEntity<ReviewCreateResponse> saveHospital(@PathVariable Long id, @RequestBody ReviewCreateRequest request){
         return ResponseEntity.ok().body(reviewService.add(request));
     }
 

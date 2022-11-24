@@ -7,9 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,20 +18,13 @@ public class HospitalReviewResponse {
     private String contents;
     private String username;
 
-    public static List<HospitalReviewResponse> of(Hospital hospital){
-        List<HospitalReviewResponse> hReviewResponse = new ArrayList<>();
-
-        List<Review> reviews = hospital.getReviews();
-
-        for (Review review : reviews) {
-            hReviewResponse.add(HospitalReviewResponse.builder()
-                    .name(hospital.getName())
-                    .roadAddress(hospital.getRoadAddress())
-                    .title(review.getTitle())
-                    .contents(review.getContents())
-                    .username(review.getUsername())
-                    .build());
-        }
-        return hReviewResponse;
+    public static HospitalReviewResponse of(Hospital hospital, Review review){
+        return new HospitalReviewResponse().builder()
+                .name(hospital.getName())
+                .roadAddress(hospital.getRoadAddress())
+                .title(review.getTitle())
+                .contents(review.getContents())
+                .username(review.getUsername())
+                .build();
     }
 }
