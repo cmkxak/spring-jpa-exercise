@@ -1,5 +1,6 @@
 package com.ll.jpaexercise.service;
 
+import com.ll.jpaexercise.entity.dto.ReviewResponse;
 import com.ll.jpaexercise.entity.Hospital;
 import com.ll.jpaexercise.entity.Review;
 import com.ll.jpaexercise.entity.dto.ReviewCreateRequest;
@@ -29,4 +30,9 @@ public class ReviewService {
         return new ReviewCreateResponse(savedReview.getId(), savedReview.getTitle(), savedReview.getContents(), "리뷰 등록 성공.");
     }
 
+    public ReviewResponse findOneReview(Long id) {
+        Review review = reviewRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
+        return new ReviewResponse(review.getId(), review.getTitle(), review.getContents());
+    }
 }
