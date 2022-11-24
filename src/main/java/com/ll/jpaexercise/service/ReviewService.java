@@ -33,6 +33,6 @@ public class ReviewService {
     public ReviewResponse findOneReview(Long id) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(RuntimeException::new);
-        return new ReviewResponse(review.getId(), review.getTitle(), review.getContents());
+        return new ReviewResponse(review.getId(), review.getTitle(), review.getContents(),review.getUsername());
     }
 }

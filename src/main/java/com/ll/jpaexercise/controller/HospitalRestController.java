@@ -3,6 +3,7 @@ package com.ll.jpaexercise.controller;
 import com.ll.jpaexercise.entity.dto.HospitalReviewResponse;
 import com.ll.jpaexercise.entity.dto.ReviewCreateRequest;
 import com.ll.jpaexercise.entity.dto.ReviewCreateResponse;
+import com.ll.jpaexercise.entity.dto.ReviewResponse;
 import com.ll.jpaexercise.service.HospitalService;
 import com.ll.jpaexercise.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,12 @@ public class HospitalRestController {
     public ResponseEntity<List<HospitalReviewResponse>> getOneHospital(@PathVariable Long id) throws Exception {
         List<HospitalReviewResponse> hospitalReviewResponse = hospitalService.getOneHospital(id);
         return ResponseEntity.ok().body(hospitalReviewResponse);
+    }
+
+    @GetMapping("/{id}/reviews")
+    public ResponseEntity<List<ReviewResponse>> getHospitalReview(@PathVariable Long id) throws Exception {
+        List<ReviewResponse> hospitalReview = hospitalService.getHospitalReview(id);
+        return ResponseEntity.ok().body(hospitalReview);
     }
 
     @PostMapping("/{id}/reviews")
