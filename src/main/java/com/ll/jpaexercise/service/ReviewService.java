@@ -10,7 +10,9 @@ import com.ll.jpaexercise.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -34,5 +36,12 @@ public class ReviewService {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(RuntimeException::new);
         return new ReviewResponse(review.getId(), review.getTitle(), review.getContents(),review.getUsername());
+    }
+
+    public List<ReviewResponse> findAll() {
+        List<Review> reviews = reviewRepository.findAll();
+        List<ReviewResponse> reviewResponses = reviews.stream().map(
+                review -> ReviewResponse.of(review)).collect(Collectors.toList());
+        return reviewResponses;
     }
 }
