@@ -8,6 +8,8 @@
 |  | GET | /api/v1/hospitals/{id} | 클릭한 병원 정보 + 리뷰 조회 |
 |  | GET | /api/v1/hospitals/{id}/reviews | 해당 병원의 리뷰만 조회 |
 |  | POST| /api/v1/hospitals/{id}/reviews | 해당 병원의 리뷰 등록 |
+| Reviews | GET | /api/v1/reviews | 모든 리뷰 조회 |
+| Reviews | GET | /api/v1/reviews/{id} | 리뷰 한개 조회 |
 
 
 <div>
